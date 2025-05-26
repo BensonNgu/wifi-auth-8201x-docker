@@ -1,0 +1,14 @@
+version: '3.8'
+
+services: 
+  freeradius:
+    images: freeradius/freeradius-server:latest
+    container_name: freeradius
+    ports:
+      - "1812:1812/udp"
+      - "1813:1813/udp"
+    volumes:
+      - ./freeradius/:etc/raddb
+    environment:
+      - TZ=Asia/Kuala_Lumpur
+    restart: unless-stopped
